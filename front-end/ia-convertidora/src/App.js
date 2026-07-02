@@ -42,7 +42,7 @@ function App() {
               <option value="python">Python</option>
             </select>
           </div>
-          <div className="SwapperRightCol">
+          <div className="swapperRightCol">
             <i className="bi bi-lightning-fill">Convertir</i>
           </div>
         </section>
