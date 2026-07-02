@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --BackgroundColor: #131720;
+  --fontColor: #ffffff;
+  --selectColor: #242B36;
+}
+
+.darkTheme {
+  background-color: var(--BackgroundColor);
+  color: var(--fontColor);
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  height: 5vh;
+}
+
+.header div {
+  width: 50%;
+}
+
+.headerRightCol,
+.headerLeftCol {
+  display: flex;
+}
+
+.headerRightCol {
+  justify-content: flex-end;
+}
+
+.headerLeftCol {
+  justify-content: flex-start;
+}
+
+.headerItem {
+  display: flex;
+  justify-content: right;
+}
+
+.main {
+  height: 95vh;
+  padding: 20px;
+  background-color: #1a1f29;
+}
+
+.swapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.swapperLeftCol {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formControl {
+  background-color: var(--selectColor);
+  color: white;
+  width: 100%;
+  padding: 10px;
+  margin: 0 10px;
+}
+.SwapperRightCol {
+  
+  background-color: #c156ff;
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+}
+
+.codeSection{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.codeSectionLeftCol, .codeSectionRightCol {
+  width: 50vw;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 10px;
+  height: 80vh;
+}
+.codeSectionHeader {
+  background-color: #131720;
+  padding: 10px;
+  border: 1px solid var(--selectColor);
+}
+
+.codeInput, .codeOutput {
+  width: 100%;
+  background-color: var(--selectColor);
+  height: 70vh;
+  color: white;
+
+}
