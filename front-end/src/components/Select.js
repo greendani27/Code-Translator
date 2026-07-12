@@ -1,4 +1,4 @@
-export default function Select() {
+export default function Select( {sendCodeToServer }) {
   return (
     <section className="swapper">
       <div className="swapperLeftCol">
@@ -16,7 +16,9 @@ export default function Select() {
         </select>
       </div>
       <div className="swapperRightCol">
-        <i className="bi bi-lightning-fill">Convertir</i>
+        <i className="bi bi-lightning-fill" onClick={sendCodeToServer}>
+          Convertir
+        </i>
       </div>
     </section>
   );

@@ -7,6 +7,24 @@ import { useState } from "react";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [inputText, setInputText] = useState("");
+  const [modifiedText, setModifiedText] = useState("");
+
+  const sendCodeToServer = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/convertCode", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ body: inputText }),
+      });
+      const dataProcessed = await response.json();
+      setModifiedText(dataProcessed.modifiedText);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   return (
     <div className={`container ${darkMode ? 'darkTheme' : 'lightTheme'}`}>
@@ -16,8 +34,12 @@ function App() {
       }
         } />
       <main className="main">
-        <Select />
-        <CodeBlock />
+        <Select sendCodeToServer={sendCodeToServer} />
+        <CodeBlock
+          inputText={inputText}
+          setInputText={setInputText}
+          modifiedText={modifiedText}
+        />
       </main>
     </div>
   );
