@@ -9,16 +9,29 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [inputText, setInputText] = useState("");
   const [modifiedText, setModifiedText] = useState("");
+  const [fromLanguage, setFromLanguage] = useState("java");
+  const [toLanguage, setToLanguage] = useState("csharp");
 
   const sendCodeToServer = async () => {
     try {
+      const body = {
+        code: inputText,
+        fromLanguage: fromLanguage,
+        toLanguage: toLanguage,
+      };
       const response = await fetch("http://localhost:8000/convertCode", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ body: inputText }),
+        body: JSON.stringify(body),
       });
+      if (!response.ok) {
+        const error = await response.json();
+        console.log("Error del servidor:", error);
+        return;
+      }
+
       const dataProcessed = await response.json();
       setModifiedText(dataProcessed.modifiedText);
     } catch (error) {
@@ -27,14 +40,19 @@ function App() {
   };
 
   return (
-    <div className={`container ${darkMode ? 'darkTheme' : 'lightTheme'}`}>
-      <Header changeTheme={() => {
-        console.log(darkMode);
-        setDarkMode(!darkMode);
-      }
-        } />
+    <div className={`container ${darkMode ? "darkTheme" : "lightTheme"}`}>
+      <Header
+        changeTheme={() => {
+          console.log(darkMode);
+          setDarkMode(!darkMode);
+        }}
+      />
       <main className="main">
-        <Select sendCodeToServer={sendCodeToServer} />
+        <Select
+          sendCodeToServer={sendCodeToServer}
+          setFromLanguage={setFromLanguage}
+          setToLanguage={setToLanguage}
+        />
         <CodeBlock
           inputText={inputText}
           setInputText={setInputText}
