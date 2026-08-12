@@ -1,2 +1,2 @@
-# IA convertidor
-IA para convertir codigo de un lenguaje de programacion a otro
+# Code Translater
+An AI that translate the code that you write into another code language
